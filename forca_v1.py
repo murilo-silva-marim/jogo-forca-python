@@ -135,14 +135,16 @@ class Forca():
 
         letraJogador = input("Digite uma letra: ")
 
-        if letraJogador in self.palavra:
-            self.letrasCorretas.append(letraJogador)
-            for index, letra in enumerate(self.palavra):
-                if letra == letraJogador:
-                    self.palavraJogador[index] = letra
-        else:
-            self.letrasErradas.append(letraJogador)
-            self.chances = self.chances - 1
+        if letraJogador not in self.letrasCorretas and letraJogador not in self.letrasErradas:
+
+            if letraJogador in self.palavra and letraJogador:
+                self.letrasCorretas.append(letraJogador)
+                for index, letra in enumerate(self.palavra):
+                    if letra == letraJogador:
+                        self.palavraJogador[index] = letra
+            else:
+                self.letrasErradas.append(letraJogador)
+                self.chances = self.chances - 1
 
         self.forcaController()
 
